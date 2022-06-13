@@ -1,0 +1,49 @@
+backend:
+  name: github
+  branch: main
+  repo: sayedimran/ahmed-taiyab
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: "featuredProducts"
+    label: "Featured Products"
+    folder: "content/featured"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number" }
+      - {
+          label: "Product Images",
+          name: "images",
+          widget: "list",
+          field: { label: Image, name: image, widget: image },
+        }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "relation",
+          collection: "categoryTypes",
+          search_fields: ["type"],
+          value_field: "type",
+          display_fields: ["type"],
+        }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+  - name: "categoryTypes"
+    label: "Category Types"
+    folder: "content/categoryTypes"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "string" }
+      - {
+          label: "Category Images",
+          name: "categoryImages",
+          widget: "list",
+          field: { label: Image, name: image, widget: image },
+        }
+      - { label: "Active", name: "active", widget: "boolean", default: true }

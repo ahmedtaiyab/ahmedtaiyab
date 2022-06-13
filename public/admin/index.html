@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <!-- <script>
+      CMS.registerEventListener({
+        name: "postPublish", // or preSave
+        handler: ({ entry, author }) => {
+          const newRecord = JSON.parse(JSON.stringify(entry.get("newRecord")));
+          const collectionType = JSON.parse(
+            JSON.stringify(entry.get("collection"))
+          );
+          const postDetails = JSON.parse(JSON.stringify(entry.get("data")));
+
+          if (newRecord && collectionType === "posts") {
+            console.log("new entry for type Posts", postDetails);
+            fetch("http://localhost:3000/api/hello", {
+              method: "POST",
+              body: JSON.stringify(postDetails),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+          }
+        },
+      });
+    </script> -->
+  </body>
+</html>
