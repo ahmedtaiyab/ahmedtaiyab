@@ -1,0 +1,12 @@
+.slider {
+  background-color: black;
+  padding: 0;
+  margin: 0 auto;
+  width: 90vw;
+  height: 100vh;
+}
+
+.slides {
+  height: 100vh;
+  background-color: #fff;
+}

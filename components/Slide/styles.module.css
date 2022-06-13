@@ -1,0 +1,39 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  object-fit: contain;
+}
+
+.contentContainer {
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.title {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.description {
+  color: rgb(252, 252, 252);
+  line-height: 20px;
+  padding: 20px 0;
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+
+.button {
+  background-color: rgb(189, 161, 2);
+  width: 10rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: rgb(161, 138, 4);
+}
