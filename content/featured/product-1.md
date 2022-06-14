@@ -1,5 +1,5 @@
 ---
-title: Product 1
+title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. "
 description: |-
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
   molestiae quas vel sint commodi repudiandae consequuntur 
