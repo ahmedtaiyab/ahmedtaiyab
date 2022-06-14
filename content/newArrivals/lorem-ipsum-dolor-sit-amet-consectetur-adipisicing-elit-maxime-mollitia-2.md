@@ -1,5 +1,6 @@
 ---
-title: Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+title: Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia
+  Updated.
 description: |-
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
   molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -10,7 +11,8 @@ images:
   - /uploads/lace2.jpg
 type: Lace
 active: true
-sale: false
+sale: true
+discountPrice: 500
 featured: false
 date: 2022-06-14T18:30:47.388Z
 ---
