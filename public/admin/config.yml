@@ -7,15 +7,31 @@ media_folder: public/uploads
 public_folder: /uploads
 
 collections:
-  - name: "featuredProducts"
-    label: "Featured Products"
-    folder: "content/featured"
+  - name: "categoryTypes"
+    label: "Category Types"
+    folder: "content/categoryTypes"
+    slug: "{{title}}"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "string" }
+      - {
+          label: "Category Images",
+          name: "categoryImages",
+          widget: "list",
+          field: { label: Image, name: image, widget: image },
+        }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+
+  - name: "newArrivals"
+    label: "New Arrivals"
+    folder: "content/newArrivals"
     create: true
     slug: "{{title}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Price", name: "price", widget: "number" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
       - {
           label: "Product Images",
           name: "images",
@@ -31,19 +47,211 @@ collections:
           value_field: "type",
           display_fields: ["type"],
         }
-      - { label: "Date", name: "date", widget: "datetime", required: false }
       - { label: "Active", name: "active", widget: "boolean", default: true }
-  - name: "categoryTypes"
-    label: "Category Types"
-    folder: "content/categoryTypes"
+      - {
+          label: "Sale",
+          name: "sale",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Discount Price",
+          name: "discountPrice",
+          widget: "number",
+          value_type: "float",
+          required: false,
+        }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+
+  - name: "plainFabrics"
+    label: "Plain Fabrics"
+    folder: "content/plainFabrics"
     create: true
+    slug: "{{title}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Type", name: "type", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
       - {
-          label: "Category Images",
-          name: "categoryImages",
+          label: "Product Images",
+          name: "images",
           widget: "list",
           field: { label: Image, name: image, widget: image },
         }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "relation",
+          collection: "categoryTypes",
+          search_fields: ["type"],
+          value_field: "type",
+          display_fields: ["type"],
+        }
       - { label: "Active", name: "active", widget: "boolean", default: true }
+      - {
+          label: "Sale",
+          name: "sale",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Discount Price",
+          name: "discountPrice",
+          widget: "number",
+          value_type: "float",
+          required: false,
+        }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+
+  - name: "laceProducts"
+    label: "Lace Products"
+    folder: "content/laceProducts"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - {
+          label: "Product Images",
+          name: "images",
+          widget: "list",
+          field: { label: Image, name: image, widget: image },
+        }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "relation",
+          collection: "categoryTypes",
+          search_fields: ["type"],
+          value_field: "type",
+          display_fields: ["type"],
+        }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+      - {
+          label: "Sale",
+          name: "sale",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Discount Price",
+          name: "discountPrice",
+          widget: "number",
+          value_type: "float",
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+
+  - name: "suitProducts"
+    label: "Suit Products"
+    folder: "content/suitProducts"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - {
+          label: "Product Images",
+          name: "images",
+          widget: "list",
+          field: { label: Image, name: image, widget: image },
+        }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "relation",
+          collection: "categoryTypes",
+          search_fields: ["type"],
+          value_field: "type",
+          display_fields: ["type"],
+        }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+      - {
+          label: "Sale",
+          name: "sale",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Discount Price",
+          name: "discountPrice",
+          widget: "number",
+          value_type: "float",
+          required: false,
+        }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime", required: false }
+
+  - name: "accessoriesProducts"
+    label: "Accessories Products"
+    folder: "content/accessoriesProducts"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - {
+          label: "Product Images",
+          name: "images",
+          widget: "list",
+          field: { label: Image, name: image, widget: image },
+        }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "relation",
+          collection: "categoryTypes",
+          search_fields: ["type"],
+          value_field: "type",
+          display_fields: ["type"],
+        }
+      - { label: "Active", name: "active", widget: "boolean", default: true }
+      - {
+          label: "Sale",
+          name: "sale",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - {
+          label: "Discount Price",
+          name: "discountPrice",
+          widget: "number",
+          value_type: "float",
+          required: false,
+        }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
+      - { label: "Date", name: "date", widget: "datetime", required: false }

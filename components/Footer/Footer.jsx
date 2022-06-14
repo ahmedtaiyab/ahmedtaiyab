@@ -49,7 +49,7 @@ const useStyles = createStyles((theme) => ({
   inner: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "flex-end",
 
     [theme.fn.smallerThan("sm")]: {
       flexDirection: "column",

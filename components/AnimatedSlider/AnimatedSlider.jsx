@@ -12,7 +12,7 @@ const AnimatedSlider = () => {
   return (
     <AutoplaySlider
       animation="cubeAnimation"
-      play={true}
+      play={false}
       cancelOnInteraction={true}
       interval={3000}
       className={styles.slider}
