@@ -9,6 +9,8 @@ price: 2500
 images:
   - /uploads/accessories.jpg
 type: Accessories
-date: 2022-06-14T13:10:05.125Z
 active: true
+sale: true
+discountPrice: 1000
+date: 2022-06-14T13:10:05.125Z
 ---
