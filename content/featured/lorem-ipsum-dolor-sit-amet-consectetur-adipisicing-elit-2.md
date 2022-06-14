@@ -9,6 +9,8 @@ price: 7500
 images:
   - /uploads/lace.jpg
 type: Lace
-date: 2022-06-14T13:10:40.536Z
 active: true
+sale: true
+discountPrice: 6500
+date: 2022-06-14T13:10:40.536Z
 ---
