@@ -8,6 +8,8 @@ price: 1499
 images:
   - /uploads/accessories2.jpeg
 type: Accessories
-date: 2022-06-14T13:09:14.206Z
 active: true
+sale: true
+discountPrice: 700.55
+date: 2022-06-14T13:09:14.206Z
 ---
