@@ -1,5 +1,5 @@
 ---
-title: "Lorem ipsum dolor sit amet consectetur adipisicing elit. "
+title: Lorem ipsum dolor sit amet consectetur adipisicing elit updated
 description: |-
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
   molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
