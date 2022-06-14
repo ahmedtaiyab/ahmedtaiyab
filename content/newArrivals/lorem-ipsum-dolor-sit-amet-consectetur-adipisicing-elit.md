@@ -11,5 +11,6 @@ images:
 type: Plain Fabrics
 active: true
 sale: false
+featured: true
 date: 2022-06-14T16:52:13.090Z
 ---
