@@ -3,7 +3,7 @@
   margin: 20px auto;
 }
 .backgroundImage {
-  height: 280px;
+  height: 260px;
   transition: transform 0.2s ease-in-out;
   border-radius: 5px;
 }

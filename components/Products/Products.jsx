@@ -7,13 +7,13 @@ import styles from "./styles.module.css";
 const Products = ({ products, type, heading }) => {
   return (
     <>
-      <Center mt={50}>
+      <Center mt={80}>
         <Text className={styles.heading}>{heading}</Text>
       </Center>
       <Grid justify="space-evenly" gutter={60} className={styles.container}>
         {products?.map(
           ({ title, price, images, slug, sale, discountPrice, date }) => (
-            <Grid.Col md={6} sm={6} xs={12} lg={3} key={slug}>
+            <Grid.Col md={4} sm={4} xs={4} lg={3} key={slug}>
               <Image
                 src={images[0]}
                 alt={slug}

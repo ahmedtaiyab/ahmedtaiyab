@@ -1,0 +1,9 @@
+.container {
+  background-color: rgb(206, 149, 5);
+  padding: 15px 0;
+}
+
+.text {
+  color: #fff;
+  text-align: center;
+}

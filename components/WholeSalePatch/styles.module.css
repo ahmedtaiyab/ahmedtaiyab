@@ -1,0 +1,67 @@
+.container {
+  width: 90vw;
+  margin: 70px auto 30px auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.788);
+  font-family: cursive;
+  letter-spacing: 2px;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.74);
+}
+
+.button {
+  background-color: rgb(204, 174, 2);
+  font-size: 12px;
+  width: 150px;
+  height: 35px;
+  font-family: cursive;
+  letter-spacing: 1px;
+  font-stretch: normal;
+  font-style: normal;
+  color: #fff;
+  font-weight: bolder;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: rgb(161, 138, 4);
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    display: none;
+  }
+
+  .title {
+    width: 90%;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .description {
+    width: 90%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 475px) {
+  .title {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+}
