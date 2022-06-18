@@ -4,7 +4,7 @@ import { Grid, Text, Center, Stack, Group } from "@mantine/core";
 
 import styles from "./styles.module.css";
 
-const Products = ({ products, type, heading }) => {
+const Products = ({ products, type, heading, breakpoints }) => {
   return (
     <>
       <Center mt={80}>
@@ -13,7 +13,13 @@ const Products = ({ products, type, heading }) => {
       <Grid justify="space-evenly" gutter={60} className={styles.container}>
         {products?.map(
           ({ title, price, images, slug, sale, discountPrice, date }) => (
-            <Grid.Col md={4} sm={4} xs={4} lg={3} key={slug}>
+            <Grid.Col
+              lg={breakpoints?.lg}
+              md={breakpoints?.md}
+              sm={breakpoints?.sm}
+              xs={breakpoints?.xs}
+              key={slug}
+            >
               <Image
                 src={images[0]}
                 alt={slug}
@@ -22,7 +28,6 @@ const Products = ({ products, type, heading }) => {
                 width={"100%"}
                 height={"100%"}
                 sizes={"50vw"}
-                className={styles.image}
               />
               <Center>
                 <Stack spacing={"xs"} mt={10}>

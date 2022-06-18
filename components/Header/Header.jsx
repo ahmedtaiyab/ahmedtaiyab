@@ -7,6 +7,8 @@ import {
   Container,
   Text,
 } from "@mantine/core";
+import Link from "next/link";
+
 import Image from "next/image";
 import { useBooleanToggle } from "@mantine/hooks";
 
@@ -75,19 +77,19 @@ const useStyles = createStyles((theme) => ({
 const links = [
   {
     label: "Plain Fabrics",
-    link: "Fabrics",
+    link: "/fabrics",
   },
   {
     label: "Lace",
-    link: "Lace",
+    link: "/lace",
   },
   {
     label: "Suits",
-    link: "Suits",
+    link: "/suits",
   },
   {
     label: "Accessories",
-    link: "Accessories",
+    link: "/accessories",
   },
   {
     label: "About",
@@ -106,14 +108,11 @@ export function HeaderComponent({ handleToggle }) {
 
   const items = links.map((link) => {
     return (
-      <a
-        key={link.label}
-        href={link.link}
-        className={classes.link}
-        onClick={(event) => event.preventDefault()}
-      >
-        {link.label}
-      </a>
+      <Link key={link} href={link.link}>
+        <a key={link.label} href={link.link} className={classes.link}>
+          {link.label}
+        </a>
+      </Link>
     );
   });
 
@@ -122,12 +121,14 @@ export function HeaderComponent({ handleToggle }) {
       <Container>
         <div className={classes.inner}>
           <div className={classes.logoWrapper}>
-            <Image
-              src={Logo}
-              alt="website-logo"
-              quality={100}
-              layout="responsive"
-            />
+            <Link href="/">
+              <Image
+                src={Logo}
+                alt="website-logo"
+                quality={100}
+                layout="responsive"
+              />
+            </Link>
           </div>
           <Group spacing={40} className={classes.links}>
             {items}

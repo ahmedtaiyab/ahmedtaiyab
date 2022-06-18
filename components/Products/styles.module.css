@@ -4,8 +4,10 @@
 }
 
 .image {
-  position: relative;
-  height: 280px;
+  /* position: relative; */
+  /* width: 200px; */
+  /* height: 250px; */
+  /* height: 200px; */
   transition: transform 0.2s ease-in-out;
 }
 

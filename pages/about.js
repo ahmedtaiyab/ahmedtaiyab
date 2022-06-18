@@ -15,7 +15,7 @@ export default function About() {
       </Head>
       <div>
         <Link href="/" passHref>
-          <Button component="a">Home</Button>
+          <Button component="a">ABOUT</Button>
         </Link>
       </div>
     </div>

@@ -9,12 +9,15 @@ import Products from "../components/Products/Products";
 import WholeSalePatch from "../components/WholeSalePatch/WholeSalePatch";
 import DiscountPatch from "../components/DiscountPatch/DiscountPatch";
 
+let cacheCategories = [];
+let cacheArrivals = [];
+
 export default function Home({ categories, newArrivalsProducts }) {
   const [featuredProducts, setFeaturedProducts] = useState(null);
   const [salesProducts, setSalesProducts] = useState(null);
 
   useEffect(() => {
-    const filterByFeatured = newArrivalsProducts.filter((item) => {
+    const filterByFeatured = newArrivalsProducts?.filter((item) => {
       if (item.featured) {
         return item;
       } else {
@@ -22,7 +25,7 @@ export default function Home({ categories, newArrivalsProducts }) {
       }
     });
 
-    const filterBySales = newArrivalsProducts.filter((item) => {
+    const filterBySales = newArrivalsProducts?.filter((item) => {
       if (item.sale) {
         return item;
       } else {
@@ -50,6 +53,7 @@ export default function Home({ categories, newArrivalsProducts }) {
           heading={"FEATURED PRODUCTS"}
           type="featured"
           products={featuredProducts}
+          breakpoints={{ lg: 3, md: 4, sm: 4, xs: 4 }}
         />
         <Categories categories={categories} />
         <WholeSalePatch />
@@ -57,11 +61,13 @@ export default function Home({ categories, newArrivalsProducts }) {
           heading={"NEW ARRIVALS"}
           type="newArrivals"
           products={newArrivalsProducts.reverse()}
+          breakpoints={{ lg: 3, md: 4, sm: 4, xs: 4 }}
         />
         <Products
           heading={"WHAT'S ON SALE"}
           type="onSale"
           products={salesProducts}
+          breakpoints={{ lg: 4, md: 4, sm: 4, xs: 4 }}
         />
         <DiscountPatch />
       </Layout>
@@ -70,10 +76,19 @@ export default function Home({ categories, newArrivalsProducts }) {
 }
 
 export const getStaticProps = async () => {
+  if (cacheCategories?.length && cacheArrivals?.length) {
+    return {
+      props: {
+        categories: cacheCategories,
+        newArrivalsProducts: JSON.parse(JSON.stringify(cacheArrivals)),
+      },
+    };
+  }
+
   const filesInCategories = fs.readdirSync("./content/categoryTypes");
   const filesInNewArrivals = fs.readdirSync("./content/newArrivals");
 
-  const categories = filesInCategories.map((filename) => {
+  cacheCategories = filesInCategories.map((filename) => {
     const file = fs.readFileSync(`./content/categoryTypes/${filename}`, "utf8");
     const matterData = matter(file);
 
@@ -83,7 +98,7 @@ export const getStaticProps = async () => {
     };
   });
 
-  const newArrivalsProducts = filesInNewArrivals.map((filename) => {
+  cacheArrivals = filesInNewArrivals.map((filename) => {
     const file = fs.readFileSync(`./content/newArrivals/${filename}`, "utf8");
     const matterData = matter(file);
 
@@ -95,8 +110,8 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      categories,
-      newArrivalsProducts: JSON.parse(JSON.stringify(newArrivalsProducts)),
+      categories: cacheCategories,
+      newArrivalsProducts: JSON.parse(JSON.stringify(cacheArrivals)),
     },
   };
 };

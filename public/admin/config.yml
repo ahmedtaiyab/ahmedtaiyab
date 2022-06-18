@@ -158,6 +158,13 @@ collections:
           value_type: "float",
           required: false,
         }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          required: false,
+        }
       - { label: "Date", name: "date", widget: "datetime", required: false }
 
   - name: "suitProducts"
