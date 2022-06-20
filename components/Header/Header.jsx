@@ -68,6 +68,10 @@ const useStyles = createStyles((theme) => ({
     width: 300,
     height: "auto",
 
+    "&:hover": {
+      cursor: "pointer",
+    },
+
     [theme.fn.smallerThan("sm")]: {
       width: 150,
     },
@@ -92,12 +96,8 @@ const links = [
     link: "/accessories",
   },
   {
-    label: "About",
-    link: "About Us",
-  },
-  {
     label: "Contact",
-    link: "Contact ",
+    link: "/contact ",
   },
 ];
 

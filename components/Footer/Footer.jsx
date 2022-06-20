@@ -72,7 +72,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   wrapper: {
-    width: 160,
+    width: 180,
 
     [theme.fn.smallerThan("xs")]: {
       margin: "20px 0",
@@ -142,53 +142,49 @@ const useStyles = createStyles((theme) => ({
 
 const data = [
   {
-    title: "About",
-    links: [
-      {
-        link: "/features",
-        label: "Features",
-      },
-      {
-        link: "/pricing",
-        label: "Pricing",
-      },
-      {
-        link: "/support",
-        label: "Support",
-      },
-    ],
-  },
-  {
     title: "Quick Links",
     links: [
       {
-        link: "/features",
-        label: "Features",
+        link: "/lace",
+        label: "Laces",
       },
       {
-        link: "/pricing",
-        label: "Pricing",
+        link: "/suits",
+        label: "Suits",
       },
       {
-        link: "/support",
-        label: "Support",
+        link: "/accessories",
+        label: "Accessories",
+      },
+      {
+        link: "/fabrics",
+        label: "Plain Fabrics",
       },
     ],
   },
   {
-    title: "Community",
+    title: "Find By",
     links: [
       {
-        link: "/features",
-        label: "Features",
+        link: "/sales",
+        label: "Top Sales",
       },
       {
-        link: "/pricing",
-        label: "Pricing",
+        link: "/featured",
+        label: "Top Featured",
       },
       {
-        link: "/support",
-        label: "Support",
+        link: "/arrivals",
+        label: "Top New Arrivals",
+      },
+    ],
+  },
+  {
+    title: "Other",
+    links: [
+      {
+        link: "/contact",
+        label: "Contact Us",
       },
     ],
   },

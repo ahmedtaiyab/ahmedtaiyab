@@ -4,15 +4,11 @@
 }
 
 .image {
-  /* position: relative; */
-  /* width: 200px; */
-  /* height: 250px; */
-  /* height: 200px; */
   transition: transform 0.2s ease-in-out;
 }
 
 .image:hover {
-  transform: scale(1.2);
+  transform: scale(1.5);
   cursor: pointer;
 }
 

@@ -7,9 +7,11 @@ import styles from "./styles.module.css";
 const Products = ({ products, type, heading, breakpoints }) => {
   return (
     <>
-      <Center mt={80}>
-        <Text className={styles.heading}>{heading}</Text>
-      </Center>
+      {heading && (
+        <Center mt={80}>
+          <Text className={styles.heading}>{heading}</Text>
+        </Center>
+      )}
       <Grid justify="space-evenly" gutter={60} className={styles.container}>
         {products?.map(
           ({ title, price, images, slug, sale, discountPrice, date }) => (
@@ -28,6 +30,7 @@ const Products = ({ products, type, heading, breakpoints }) => {
                 width={"100%"}
                 height={"100%"}
                 sizes={"50vw"}
+                className={styles.image}
               />
               <Center>
                 <Stack spacing={"xs"} mt={10}>

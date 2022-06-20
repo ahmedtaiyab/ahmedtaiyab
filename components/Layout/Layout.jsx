@@ -20,12 +20,11 @@ export default function Layout({ children }) {
           padding: 0,
         },
       }}
-      navbarOffsetBreakpoint="lg"
       navbar={opened && <NavbarComponent />}
-      footer={<FooterComponent />}
+      footer={!opened && <FooterComponent />}
       header={<HeaderComponent handleToggle={(e) => setOpened(e)} />}
     >
-      {children}
+      {!opened && children}
     </AppShell>
   );
 }

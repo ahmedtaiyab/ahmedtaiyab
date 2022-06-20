@@ -7,3 +7,10 @@
   color: #fff;
   text-align: center;
 }
+
+@media (max-width: 475px) {
+  .text {
+    font-size: 0.8rem;
+    padding: 0 10px;
+  }
+}
