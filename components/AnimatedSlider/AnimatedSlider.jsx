@@ -12,12 +12,13 @@ const AnimatedSlider = () => {
   return (
     <AutoplaySlider
       animation="cubeAnimation"
-      play={true}
+      play={false}
       cancelOnInteraction={true}
       interval={3000}
       className={styles.slider}
       buttons={false}
       bullets={false}
+      mobileTouch={true}
     >
       <div style={{ backgroundColor: "#fff", height: "100vh" }}>
         <Slide

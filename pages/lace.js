@@ -66,6 +66,7 @@ export const getStaticProps = async () => {
       props: {
         lacesProducts: JSON.parse(JSON.stringify(cacheLacesProducts)),
       },
+      revalidate: 20,
     };
   }
 
@@ -85,5 +86,6 @@ export const getStaticProps = async () => {
     props: {
       lacesProducts: JSON.parse(JSON.stringify(cacheLacesProducts)),
     },
+    revalidate: 20,
   };
 };

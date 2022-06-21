@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Grid, Text, Center, Stack, Group } from "@mantine/core";
 
 import styles from "./styles.module.css";
+import BlurImage from "../../assets/blurImage.png";
 
 const Products = ({ products, type, heading, breakpoints }) => {
   return (
@@ -31,6 +32,8 @@ const Products = ({ products, type, heading, breakpoints }) => {
                 height={"100%"}
                 sizes={"50vw"}
                 className={styles.image}
+                blurDataURL={BlurImage}
+                placeholder="blur"
               />
               <Center>
                 <Stack spacing={"xs"} mt={10}>

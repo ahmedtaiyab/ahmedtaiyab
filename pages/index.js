@@ -119,6 +119,7 @@ export const getStaticProps = async () => {
         newArrivalsProducts: JSON.parse(JSON.stringify(cacheArrivals)),
         lacesProducts: JSON.parse(JSON.stringify(lacesProducts)),
       },
+      revalidate: 20,
     };
   }
 
@@ -163,5 +164,6 @@ export const getStaticProps = async () => {
       newArrivalsProducts: JSON.parse(JSON.stringify(cacheArrivals)),
       lacesProducts: JSON.parse(JSON.stringify(lacesProducts)),
     },
+    revalidate: 20,
   };
 };
