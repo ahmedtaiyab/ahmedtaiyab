@@ -3,15 +3,15 @@ import Head from "next/head";
 import fs from "fs";
 import matter from "gray-matter";
 
-import Layout from "../components/Layout/Layout";
-import laceHeroImage from "../assets/lace2.jpg"; //Needs to change this
-import HeroImageComponent from "../components/HeroImageComponent/HeroImageComponent";
-import Paginator from "../components/Paginator/Paginator";
-import Products from "../components/Products/Products";
+import Layout from "../../components/Layout/Layout";
+import laceHeroImage from "../../assets/lace2.jpg"; //Needs to change this
+import HeroImageComponent from "../../components/HeroImageComponent/HeroImageComponent";
+import Paginator from "../../components/Paginator/Paginator";
+import Products from "../../components/Products/Products";
 
 let cacheLacesProducts = [];
 
-export default function Lace({ lacesProducts }) {
+export default function Index({ lacesProducts }) {
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [paginatedData, setPaginatedData] = useState(null);

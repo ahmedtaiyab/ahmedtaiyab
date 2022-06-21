@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import { Grid, Text, Center, Stack, Group } from "@mantine/core";
+import Link from "next/link";
+import { Grid, Text, Center, Stack, Group, Button } from "@mantine/core";
 
 import styles from "./styles.module.css";
 import BlurImage from "../../assets/blurImage.png";
 
-const Products = ({ products, type, heading, breakpoints }) => {
+const Products = ({ products, heading, breakpoints }) => {
   return (
     <>
       {heading && (
@@ -15,7 +16,7 @@ const Products = ({ products, type, heading, breakpoints }) => {
       )}
       <Grid justify="space-evenly" gutter={60} className={styles.container}>
         {products?.map(
-          ({ title, price, images, slug, sale, discountPrice, date }) => (
+          ({ title, price, images, slug, sale, discountPrice, date, type }) => (
             <Grid.Col
               lg={breakpoints?.lg}
               md={breakpoints?.md}
@@ -37,7 +38,9 @@ const Products = ({ products, type, heading, breakpoints }) => {
               />
               <Center>
                 <Stack spacing={"xs"} mt={10}>
-                  <Text className={styles.title}>{title}</Text>
+                  <Link href={type === "Lace" ? `/lace/${slug}` : "/"}>
+                    <Text className={styles.title}>{title}</Text>
+                  </Link>
                   <Group>
                     {discountPrice && (
                       <Text className={styles.discountPrice}>

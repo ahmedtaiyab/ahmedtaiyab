@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Grid, Text, BackgroundImage, Center, Box } from "@mantine/core";
 
 import styles from "./styles.module.css";
@@ -12,15 +13,17 @@ const Categories = ({ categories }) => {
       <Grid justify="space-evenly" gutter={60} className={styles.container}>
         {categories?.map(({ title, categoryImages, slug }) => (
           <Grid.Col md={4} sm={6} xs={5} lg={3} key={slug}>
-            <BackgroundImage
-              className={styles.backgroundImage}
-              src={categoryImages[0]}
-            >
-              <Box className={styles.overlay} />
-              <Center className={styles.center} p={"xl"}>
-                <Text className={styles.title}>{title}</Text>
-              </Center>
-            </BackgroundImage>
+            <Link href={slug === "plain-fabrics" ? "/fabrics" : slug}>
+              <BackgroundImage
+                className={styles.backgroundImage}
+                src={categoryImages[0]}
+              >
+                <Box className={styles.overlay} />
+                <Center className={styles.center} p={"xl"}>
+                  <Text className={styles.title}>{title}</Text>
+                </Center>
+              </BackgroundImage>
+            </Link>
           </Grid.Col>
         ))}
       </Grid>

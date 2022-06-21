@@ -1,0 +1,84 @@
+.container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.788);
+  font-family: cursive;
+  letter-spacing: 2px;
+  font-stretch: normal;
+  font-style: normal;
+}
+
+.imgContainer {
+  position: relative;
+  width: 95%;
+  height: 400px;
+  cursor: pointer;
+}
+
+.smallImgContainer {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  cursor: pointer;
+}
+
+.smallImgContainer:hover {
+  outline: solid 3px gold;
+  border-radius: 5px;
+}
+
+.activeImg {
+  outline: solid 3px goldenrod;
+  border-radius: 5px;
+}
+
+.price {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.89);
+  font-weight: bolder;
+}
+
+.discountPrice {
+  font-size: 1rem;
+  color: rgb(221, 177, 65);
+  font-weight: bolder;
+}
+
+.description {
+  margin-top: 1.5rem;
+  font-style: normal;
+  font-family: "Times New Roman", Times, serif;
+  font-stretch: normal;
+  color: rgba(0, 0, 0, 0.74);
+  font-size: 1rem;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 475px) {
+  .title {
+    font-size: 1.2rem;
+    font-weight: bolder;
+  }
+
+  .price,
+  .discountPrice {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  .description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .imgContainer {
+    position: relative;
+    width: 95%;
+    height: 200px;
+  }
+}
