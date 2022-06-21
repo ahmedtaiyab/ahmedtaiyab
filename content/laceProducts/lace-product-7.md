@@ -8,6 +8,9 @@ description: |-
 price: 6500
 images:
   - /uploads/lace2.jpg
+  - /uploads/accessories2.jpeg
+  - /uploads/plainfabrics2.jpg
+  - /uploads/lace2.jpg
 type: Lace
 active: true
 sale: true
