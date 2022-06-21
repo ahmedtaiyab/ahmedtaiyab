@@ -9,8 +9,6 @@ import HeroImageComponent from "../../components/HeroImageComponent/HeroImageCom
 import Paginator from "../../components/Paginator/Paginator";
 import Products from "../../components/Products/Products";
 
-let cacheLacesProducts = [];
-
 export default function Index({ lacesProducts }) {
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -27,6 +25,7 @@ export default function Index({ lacesProducts }) {
   return (
     <div>
       <Head>
+        <meta charSet="utf-8" />
         <title>Ahmed Taiyab | Lace</title>
         <meta name="description" content="Lace" />
         <link rel="icon" href="/favicon.ico" />
@@ -61,18 +60,9 @@ export default function Index({ lacesProducts }) {
 }
 
 export const getStaticProps = async () => {
-  if (cacheLacesProducts?.length) {
-    return {
-      props: {
-        lacesProducts: JSON.parse(JSON.stringify(cacheLacesProducts)),
-      },
-      revalidate: 20,
-    };
-  }
-
   const filesInLaces = fs.readdirSync("./content/laceProducts");
 
-  cacheLacesProducts = filesInLaces.map((filename) => {
+  const cacheLacesProducts = filesInLaces.map((filename) => {
     const file = fs.readFileSync(`./content/laceProducts/${filename}`, "utf8");
     const matterData = matter(file);
 
@@ -86,6 +76,6 @@ export const getStaticProps = async () => {
     props: {
       lacesProducts: JSON.parse(JSON.stringify(cacheLacesProducts)),
     },
-    revalidate: 20,
+    revalidate: 10,
   };
 };

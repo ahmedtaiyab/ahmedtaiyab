@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Grid, Text, Box, Stack, Group } from "@mantine/core";
 
 import styles from "./styles.module.css";
 import BlurImage from "../../assets/blurImage.png";
 
+const magnifierHeight = 200;
+const magnifieWidth = 200;
+const zoomLevel = 1.5;
+
 const ProductDetails = ({ postData }) => {
-  const [selectedImg, setSelectedImg] = useState(postData?.images?.[0]);
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
+  const [showMagnifier, setShowMagnifier] = useState(false);
+  const [[x, y], setXY] = useState([0, 0]);
+
+  useEffect(() => {
+    if (postData?.images) {
+      setSelectedImg(postData?.images?.[0]);
+    }
+  }, [postData]);
 
   return (
     <Grid className={styles.container}>
@@ -14,15 +27,71 @@ const ProductDetails = ({ postData }) => {
         <Stack>
           <Box component="div" className={styles.imgContainer}>
             {selectedImg && (
-              <Image
-                src={selectedImg}
-                alt={"thumbnail"}
-                quality={100}
-                layout="fill"
-                blurDataURL={BlurImage}
-                placeholder="blur"
-                style={{ borderRadius: 5 }}
-              />
+              <>
+                <Image
+                  src={selectedImg}
+                  alt={"thumbnail"}
+                  quality={100}
+                  layout="fill"
+                  blurDataURL={BlurImage}
+                  placeholder="blur"
+                  style={{ borderRadius: 5 }}
+                  onMouseMove={(e) => {
+                    // update cursor position
+                    const elem = e.currentTarget;
+                    const { top, left } = elem.getBoundingClientRect();
+
+                    // calculate cursor position on the image
+                    const x = e.pageX - left - window.pageXOffset;
+                    const y = e.pageY - top - window.pageYOffset;
+                    setXY([x, y]);
+                  }}
+                  onMouseEnter={(e) => {
+                    // update image size and turn-on magnifier
+                    const elem = e.currentTarget;
+                    const { width, height } = elem.getBoundingClientRect();
+                    setSize([width, height]);
+                    setShowMagnifier(true);
+                  }}
+                  onMouseLeave={() => {
+                    setShowMagnifier(false);
+                  }}
+                />
+                <Box
+                  component="div"
+                  style={{
+                    display: showMagnifier ? "" : "none",
+                    position: "absolute",
+
+                    // prevent magnifier blocks the mousemove event of img
+                    pointerEvents: "none",
+                    // set size of magnifier
+                    height: `${magnifierHeight}px`,
+                    width: `${magnifieWidth}px`,
+                    // move element center to cursor pos
+                    top: `${y - magnifierHeight / 2}px`,
+                    left: `${x - magnifieWidth / 2}px`,
+                    opacity: "1", // reduce opacity so you can verify position
+                    border: "1px solid lightgray",
+                    backgroundColor: "white",
+                    backgroundImage: `url('${selectedImg}')`,
+                    backgroundRepeat: "no-repeat",
+
+                    //calculate zoomed image size
+                    backgroundSize: `${imgWidth * zoomLevel}px ${
+                      imgHeight * zoomLevel
+                    }px`,
+
+                    //calculate position of zoomed image.
+                    backgroundPositionX: `${
+                      -x * zoomLevel + magnifieWidth / 2
+                    }px`,
+                    backgroundPositionY: `${
+                      -y * zoomLevel + magnifierHeight / 2
+                    }px`,
+                  }}
+                />
+              </>
             )}
           </Box>
           {postData?.images.length > 1 && (
@@ -30,7 +99,7 @@ const ProductDetails = ({ postData }) => {
               {postData?.images?.map((img) => (
                 <Box
                   key={img}
-                  component="a"
+                  component="div"
                   className={[
                     styles.smallImgContainer,
                     selectedImg === img && styles.activeImg,

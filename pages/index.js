@@ -108,6 +108,7 @@ export default function Home({
 }
 
 export const getStaticProps = async () => {
+  //Check whether we get stale data because of this
   if (
     cacheCategories?.length &&
     cacheArrivals?.length &&

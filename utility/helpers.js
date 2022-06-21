@@ -1,17 +1,11 @@
 import fs from "fs";
 import matter from "gray-matter";
 
-let postCache = [];
+export function fetchFilesFromDirectory(directory) {
+  const filesInDirectory = fs.readdirSync(directory);
 
-function fetchPostContent(postsDirectory) {
-  if (postCache?.length) {
-    return postCache;
-  }
-
-  const filesInDirectory = fs.readdirSync(postsDirectory);
-
-  postCache = filesInDirectory.map((filename) => {
-    const file = fs.readFileSync(`${postsDirectory}/${filename}`, "utf8");
+  const fileData = filesInDirectory.map((filename) => {
+    const file = fs.readFileSync(`${directory}/${filename}`, "utf8");
     const matterData = matter(file);
 
     return {
@@ -20,15 +14,15 @@ function fetchPostContent(postsDirectory) {
     };
   });
 
-  return postCache;
+  return fileData;
 }
 
 export function countPosts() {
-  return fetchPostContent(postsDirectory).length;
+  return fetchFilesFromDirectory(directory).length;
 }
 
-export function listPostContent(page, limit, postsDirectory) {
-  return fetchPostContent(postsDirectory).slice(
+export function listPostContent(page, limit, directory) {
+  return fetchFilesFromDirectory(directory).slice(
     (page - 1) * limit,
     page * limit
   );
