@@ -13,5 +13,5 @@ active: true
 sale: true
 discountPrice: 1500
 featured: true
-date: 2022-06-18T01:38:30.989Z
+date: 2022-06-22T11:45:49.740Z
 ---
