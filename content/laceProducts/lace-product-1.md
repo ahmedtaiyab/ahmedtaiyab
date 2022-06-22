@@ -10,6 +10,8 @@ images:
   - /uploads/lace2.jpg
 type: Lace
 active: true
-sale: false
+sale: true
+discountPrice: 1500
+featured: true
 date: 2022-06-18T01:38:30.989Z
 ---
