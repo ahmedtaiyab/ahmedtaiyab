@@ -81,4 +81,9 @@
     width: 95%;
     height: 200px;
   }
+
+  .smallImgContainer {
+    width: 40px;
+    height: 40px;
+  }
 }

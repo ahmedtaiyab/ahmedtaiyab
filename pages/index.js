@@ -85,7 +85,7 @@ export default function Home({
           heading={"FEATURED PRODUCTS"}
           type="featured"
           products={featuredProducts}
-          breakpoints={{ lg: 3, md: 4, sm: 4, xs: 3 }}
+          breakpoints={{ lg: 3, md: 4, sm: 4, xs: 4 }}
         />
         <Categories categories={categories} />
         <WholeSalePatch />

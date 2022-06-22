@@ -9,6 +9,11 @@
 }
 
 @media (max-width: 475px) {
+  .container {
+    background-color: rgb(206, 149, 5);
+    padding: 5px 0;
+  }
+
   .text {
     font-size: 0.8rem;
     padding: 0 10px;

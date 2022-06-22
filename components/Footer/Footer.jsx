@@ -92,6 +92,15 @@ const useStyles = createStyles((theme) => ({
     "&:hover": {
       textDecoration: "underline",
     },
+
+    [theme.fn.smallerThan("sm")]: {
+      textAlign: "center",
+      fontSize: 12,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      textAlign: "center",
+    },
   },
 
   title: {
@@ -100,6 +109,15 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     marginBottom: theme.spacing.xs / 2,
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
+
+    [theme.fn.smallerThan("sm")]: {
+      textAlign: "center",
+      fontSize: 15,
+    },
+
+    [theme.fn.smallerThan("xs")]: {
+      textAlign: "center",
+    },
   },
 
   afterFooter: {
@@ -213,6 +231,7 @@ export function Footer() {
       </div>
     );
   });
+
   return (
     <footer className={classes.footer}>
       <Container className={classes.inner}>
@@ -227,8 +246,8 @@ export function Footer() {
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
-        <Text color="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+        <Text color="dimmed" size="xs">
+          © 2022 Ahmed Taiyyab. All rights reserved.
         </Text>
 
         <Group spacing={0} className={classes.social} position="right" noWrap>

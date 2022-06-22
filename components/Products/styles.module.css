@@ -1,6 +1,16 @@
 .container {
   width: 90vw;
   margin: 20px auto;
+  row-gap: 40px;
+}
+
+.imgContainer {
+  position: relative;
+  width: 85%;
+  height: 280px;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: transform 0.2s ease-in-out;
 }
 
 .image {
@@ -10,6 +20,11 @@
 .image:hover {
   transform: scale(1.5);
   cursor: pointer;
+}
+
+.contentContainer {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .heading {
@@ -22,7 +37,7 @@
 }
 
 .title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.856);
   font-family: cursive;
   line-height: 18px;
@@ -34,13 +49,13 @@
 }
 
 .price {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: rgba(0, 0, 0, 0.89);
   font-weight: bolder;
 }
 
 .discountPrice {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: rgb(221, 177, 65);
   font-weight: bolder;
 }
@@ -57,4 +72,43 @@
   font-weight: bolder;
   border-radius: 2px;
   align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+  .imgContainer {
+    width: 100%;
+    height: 200px;
+  }
+
+  .contentContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 475px) {
+  .imgContainer {
+    width: 100%;
+    height: 150px;
+  }
+
+  .title {
+    font-size: 0.8rem;
+    line-height: 16px;
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  .price,
+  .discountPrice {
+    font-size: 0.8rem;
+  }
+
+  .priceContainer,
+  .sale {
+    margin: 0 auto;
+  }
+
+  .heading {
+    font-size: 1.2rem;
+  }
 }

@@ -10,9 +10,9 @@ const Categories = ({ categories }) => {
       <Center mt={50}>
         <Text className={styles.heading}>FEATURED CATEGORIES</Text>
       </Center>
-      <Grid justify="space-evenly" gutter={60} className={styles.container}>
+      <Grid justify="space-evenly" className={styles.container}>
         {categories?.map(({ title, categoryImages, slug }) => (
-          <Grid.Col md={4} sm={6} xs={5} lg={3} key={slug}>
+          <Grid.Col span={6} md={4} sm={4} xs={4} lg={3} key={slug}>
             <Link href={slug === "plain-fabrics" ? "/fabrics" : slug}>
               <BackgroundImage
                 className={styles.backgroundImage}

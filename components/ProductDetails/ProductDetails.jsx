@@ -5,8 +5,8 @@ import { Grid, Text, Box, Stack, Group } from "@mantine/core";
 import styles from "./styles.module.css";
 import BlurImage from "../../assets/blurImage.png";
 
-const magnifierHeight = 200;
-const magnifieWidth = 200;
+const magnifierHeight = 150;
+const magnifieWidth = 150;
 const zoomLevel = 1.5;
 
 const ProductDetails = ({ postData }) => {
@@ -49,9 +49,13 @@ const ProductDetails = ({ postData }) => {
                   onMouseEnter={(e) => {
                     // update image size and turn-on magnifier
                     const elem = e.currentTarget;
+
                     const { width, height } = elem.getBoundingClientRect();
-                    setSize([width, height]);
-                    setShowMagnifier(true);
+
+                    if (width > 500) {
+                      setSize([width, height]);
+                      setShowMagnifier(true);
+                    }
                   }}
                   onMouseLeave={() => {
                     setShowMagnifier(false);

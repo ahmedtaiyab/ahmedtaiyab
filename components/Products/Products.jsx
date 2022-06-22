@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Grid, Text, Center, Stack, Group, Button } from "@mantine/core";
+import { Grid, Text, Center, Stack, Group, Button, Box } from "@mantine/core";
 
 import styles from "./styles.module.css";
 import BlurImage from "../../assets/blurImage.png";
@@ -14,34 +14,34 @@ const Products = ({ products, heading, breakpoints }) => {
           <Text className={styles.heading}>{heading}</Text>
         </Center>
       )}
-      <Grid justify="space-evenly" gutter={60} className={styles.container}>
+      <Grid justify="space-evenly" className={styles.container}>
         {products?.map(
           ({ title, price, images, slug, sale, discountPrice, date, type }) => (
             <Grid.Col
+              span={6}
               lg={breakpoints?.lg}
               md={breakpoints?.md}
               sm={breakpoints?.sm}
               xs={breakpoints?.xs}
               key={slug}
             >
-              <Image
-                src={images[0]}
-                alt={slug}
-                quality={100}
-                layout="responsive"
-                width={"100%"}
-                height={"100%"}
-                sizes={"50vw"}
-                className={styles.image}
-                blurDataURL={BlurImage}
-                placeholder="blur"
-              />
-              <Center>
+              <Box className={styles.imgContainer}>
+                <Image
+                  src={images[0]}
+                  alt={slug}
+                  quality={100}
+                  layout="fill"
+                  className={styles.image}
+                  blurDataURL={BlurImage}
+                  placeholder="blur"
+                />
+              </Box>
+              <Box className={styles.contentContainer}>
                 <Stack spacing={"xs"} mt={10}>
                   <Link href={type === "Lace" ? `/lace/${slug}` : "/"}>
                     <Text className={styles.title}>{title}</Text>
                   </Link>
-                  <Group>
+                  <Group className={styles.priceContainer}>
                     {discountPrice && (
                       <Text className={styles.discountPrice}>
                         ₹{discountPrice}
@@ -61,7 +61,7 @@ const Products = ({ products, heading, breakpoints }) => {
                   </Group>
                   {sale && <Text className={styles.sale}>SALE</Text>}
                 </Stack>
-              </Center>
+              </Box>
             </Grid.Col>
           )
         )}
