@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import fs from "fs";
-import matter from "gray-matter";
 
 import Layout from "../../components/Layout/Layout";
 import laceHeroImage from "../../assets/lace2.jpg"; //Needs to change this
 import HeroImageComponent from "../../components/HeroImageComponent/HeroImageComponent";
 import Paginator from "../../components/Paginator/Paginator";
 import Products from "../../components/Products/Products";
+import { fetchFilesFromDirectory } from "../../utility/helpers";
 
 export default function Index({ lacesProducts }) {
   const [activePage, setActivePage] = useState(1);
@@ -60,21 +59,11 @@ export default function Index({ lacesProducts }) {
 }
 
 export const getStaticProps = async () => {
-  const filesInLaces = fs.readdirSync("./content/laceProducts");
-
-  const cacheLacesProducts = filesInLaces.map((filename) => {
-    const file = fs.readFileSync(`./content/laceProducts/${filename}`, "utf8");
-    const matterData = matter(file);
-
-    return {
-      ...matterData.data,
-      slug: filename.slice(0, filename.indexOf(".")),
-    };
-  });
+  const lacesProducts = fetchFilesFromDirectory("./content/laceProducts");
 
   return {
     props: {
-      lacesProducts: JSON.parse(JSON.stringify(cacheLacesProducts)),
+      lacesProducts: JSON.parse(JSON.stringify(lacesProducts)),
     },
     revalidate: 10,
   };

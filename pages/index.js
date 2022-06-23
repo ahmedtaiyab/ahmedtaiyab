@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import fs from "fs";
-import matter from "gray-matter";
 import Head from "next/head";
 import Layout from "../components/Layout/Layout";
 import AnimatedSlider from "../components/AnimatedSlider/AnimatedSlider";
@@ -8,15 +6,12 @@ import Categories from "../components/Categories/Categories";
 import Products from "../components/Products/Products";
 import WholeSalePatch from "../components/WholeSalePatch/WholeSalePatch";
 import DiscountPatch from "../components/DiscountPatch/DiscountPatch";
-
-let cacheCategories = [];
-let cacheArrivals = [];
-let lacesProducts = [];
+import { fetchFilesFromDirectory } from "../utility/helpers";
 
 export default function Home({
-  categories,
-  newArrivalsProducts,
-  lacesProducts,
+  categories = [],
+  newArrivalsProducts = [],
+  lacesProducts = [],
 }) {
   const [featuredProducts, setFeaturedProducts] = useState(null);
   const [salesProducts, setSalesProducts] = useState(null);
@@ -58,12 +53,12 @@ export default function Home({
       ...filterArrivalsByFeatured,
       ...filterLacesByFeatured,
     ]
-      .sort((a, b) => new Date(b?.date) - new Date(a?.date))
-      .slice(0, 8);
+      ?.sort((a, b) => new Date(b?.date) - new Date(a?.date))
+      ?.slice(0, 8);
 
     const salesProducts = [...filterArrivalsBySales, ...filterLacesBySales]
-      .sort((a, b) => new Date(b?.date) - new Date(a?.date))
-      .slice(0, 8);
+      ?.sort((a, b) => new Date(b?.date) - new Date(a?.date))
+      ?.slice(0, 8);
 
     setFeaturedProducts(featuredProducts);
     setSalesProducts(salesProducts);
@@ -92,7 +87,7 @@ export default function Home({
         <Products
           heading={"NEW ARRIVALS"}
           type="newArrivals"
-          products={newArrivalsProducts.reverse()}
+          products={newArrivalsProducts?.reverse()}
           breakpoints={{ lg: 3, md: 4, sm: 4, xs: 4 }}
         />
         <Products
@@ -108,61 +103,14 @@ export default function Home({
 }
 
 export const getStaticProps = async () => {
-  //Check whether we get stale data because of this
-  if (
-    cacheCategories?.length &&
-    cacheArrivals?.length &&
-    lacesProducts?.length
-  ) {
-    return {
-      props: {
-        categories: cacheCategories,
-        newArrivalsProducts: JSON.parse(JSON.stringify(cacheArrivals)),
-        lacesProducts: JSON.parse(JSON.stringify(lacesProducts)),
-      },
-      revalidate: 20,
-    };
-  }
-
-  const filesInCategories = fs.readdirSync("./content/categoryTypes");
-  const filesInLaces = fs.readdirSync("./content/laceProducts");
-
-  const filesInNewArrivals = fs.readdirSync("./content/newArrivals");
-
-  cacheCategories = filesInCategories.map((filename) => {
-    const file = fs.readFileSync(`./content/categoryTypes/${filename}`, "utf8");
-    const matterData = matter(file);
-
-    return {
-      ...matterData.data,
-      slug: filename.slice(0, filename.indexOf(".")),
-    };
-  });
-
-  cacheArrivals = filesInNewArrivals.map((filename) => {
-    const file = fs.readFileSync(`./content/newArrivals/${filename}`, "utf8");
-    const matterData = matter(file);
-
-    return {
-      ...matterData.data,
-      slug: filename.slice(0, filename.indexOf(".")),
-    };
-  });
-
-  lacesProducts = filesInLaces.map((filename) => {
-    const file = fs.readFileSync(`./content/laceProducts/${filename}`, "utf8");
-    const matterData = matter(file);
-
-    return {
-      ...matterData.data,
-      slug: filename.slice(0, filename.indexOf(".")),
-    };
-  });
+  const categories = fetchFilesFromDirectory("./content/categoryTypes");
+  const newArrivalsProducts = fetchFilesFromDirectory("./content/newArrivals");
+  const lacesProducts = fetchFilesFromDirectory("./content/laceProducts");
 
   return {
     props: {
-      categories: cacheCategories,
-      newArrivalsProducts: JSON.parse(JSON.stringify(cacheArrivals)),
+      categories,
+      newArrivalsProducts: JSON.parse(JSON.stringify(newArrivalsProducts)),
       lacesProducts: JSON.parse(JSON.stringify(lacesProducts)),
     },
     revalidate: 20,
