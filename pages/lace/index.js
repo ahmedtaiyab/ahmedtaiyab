@@ -13,11 +13,11 @@ export default function Index({ lacesProducts }) {
   const [totalPages, setTotalPages] = useState(0);
   const [paginatedData, setPaginatedData] = useState(null);
 
-  const postsPerPage = 3;
+  const postsPerPage = 8;
 
   useEffect(() => {
     const pages = Math.ceil(lacesProducts?.length / postsPerPage);
-    setPaginatedData(lacesProducts?.slice(0, 3));
+    setPaginatedData(lacesProducts?.slice(0, 8));
     setTotalPages(pages);
   }, []);
 
@@ -42,16 +42,20 @@ export default function Index({ lacesProducts }) {
           <Products
             type="lacesProducts"
             products={paginatedData}
-            breakpoints={{ lg: 4, md: 4, sm: 4, xs: 4 }}
+            breakpoints={{ lg: 3, md: 4, sm: 4, xs: 4 }}
           />
-          <Paginator
-            activePage={activePage}
-            onChange={(page) => {
-              setActivePage(page);
-              setPaginatedData(lacesProducts?.slice((page - 1) * 3, page * 3));
-            }}
-            totalPages={totalPages}
-          />
+          {totalPages > 1 && (
+            <Paginator
+              activePage={activePage}
+              onChange={(page) => {
+                setActivePage(page);
+                setPaginatedData(
+                  lacesProducts?.slice((page - 1) * 8, page * 8)
+                );
+              }}
+              totalPages={totalPages}
+            />
+          )}
         </div>
       </Layout>
     </div>

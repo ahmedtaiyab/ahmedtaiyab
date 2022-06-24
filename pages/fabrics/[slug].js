@@ -8,26 +8,26 @@ import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import Products from "../../components/Products/Products";
 import { fetchFilesFromDirectory } from "../../utility/helpers";
 
-export default function LaceDetails({ postData, likedLaceProducts }) {
+export default function FabricDetails({ postData, likedFabricProducts }) {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    if (likedLaceProducts) {
-      const likedProducts = likedLaceProducts
+    if (likedFabricProducts) {
+      const likedProducts = likedFabricProducts
         .filter(({ title }) => title !== postData?.title)
         .sort(() => 0.5 - Math.random())
         .slice(0, 4);
 
       setProducts(likedProducts);
     }
-  }, [likedLaceProducts, postData]);
+  }, [likedFabricProducts, postData]);
 
   return (
     <div>
       <Head>
         <meta charSet="utf-8" />
-        <title>Ahmed Taiyab | Lace | {postData?.title} </title>
-        <meta name="description" content="Lace Descriptions" />
+        <title>Ahmed Taiyab | Fabrics | {postData?.title} </title>
+        <meta name="description" content="Fabrics Details Descriptions" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
@@ -44,7 +44,7 @@ export default function LaceDetails({ postData, likedLaceProducts }) {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const path = `./content/laceProducts/${slug}.md`;
+  const path = `./content/plainFabrics/${slug}.md`;
   const fileContents = fs.readFileSync(path, "utf8");
 
   const matterResult = matter(fileContents);
@@ -54,21 +54,21 @@ export async function getStaticProps({ params: { slug } }) {
   };
 
   //Fetching You May Also Like Products Listing
-  const likedLaceProducts = fetchFilesFromDirectory("./content/laceProducts");
+  const likedFabricProducts = fetchFilesFromDirectory("./content/plainFabrics");
 
   return {
     props: {
       postData: JSON.parse(JSON.stringify(postData)),
-      likedLaceProducts: JSON.parse(JSON.stringify(likedLaceProducts)),
+      likedFabricProducts: JSON.parse(JSON.stringify(likedFabricProducts)),
     },
     revalidate: 20,
   };
 }
 
 export async function getStaticPaths() {
-  const filesInLaces = fs.readdirSync("./content/laceProducts");
+  const filesInFabrics = fs.readdirSync("./content/plainFabrics");
 
-  const paths = filesInLaces
+  const paths = filesInFabrics
     .reverse()
     .slice(0, 3)
     .map((fileName) => ({

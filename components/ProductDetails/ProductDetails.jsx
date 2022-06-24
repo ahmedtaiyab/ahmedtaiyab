@@ -131,7 +131,7 @@ const ProductDetails = ({ postData }) => {
           <Group>
             {postData?.discountPrice && (
               <Text className={styles.discountPrice}>
-                ₹{postData?.discountPrice}
+                &#8377;{postData?.discountPrice}
               </Text>
             )}
             <Text
@@ -143,7 +143,7 @@ const ProductDetails = ({ postData }) => {
               }}
               className={styles.price}
             >
-              ₹{postData?.price}
+              &#8377;{postData?.price}
             </Text>
           </Group>
           <Text className={styles.description}>

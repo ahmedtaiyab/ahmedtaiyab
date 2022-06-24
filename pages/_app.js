@@ -1,7 +1,7 @@
 import Head from "next/head";
+
 import { MantineProvider } from "@mantine/core";
 import colors from "../utility/colors";
-
 import "../utility/globals.css";
 
 export default function App(props) {
@@ -10,6 +10,7 @@ export default function App(props) {
   return (
     <>
       <Head>
+        <meta charSet="utf-8" />
         <title>Ahmed Taiyab | Home</title>
         <meta
           name="viewport"

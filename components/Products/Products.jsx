@@ -44,7 +44,7 @@ const Products = ({ products, heading, breakpoints }) => {
                   <Group className={styles.priceContainer}>
                     {discountPrice && (
                       <Text className={styles.discountPrice}>
-                        ₹{discountPrice}
+                        &#8377;{discountPrice}
                       </Text>
                     )}
                     <Text
@@ -56,7 +56,7 @@ const Products = ({ products, heading, breakpoints }) => {
                       }}
                       className={styles.price}
                     >
-                      ₹{price}
+                      &#8377;{price}
                     </Text>
                   </Group>
                   {sale && <Text className={styles.sale}>SALE</Text>}
