@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 import Head from "next/head";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import { MantineProvider } from "@mantine/core";
 import colors from "../utility/colors";
@@ -6,6 +10,11 @@ import "../utility/globals.css";
 
 export default function App(props) {
   const { Component, pageProps } = props;
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+    AOS.refresh();
+  }, []);
 
   return (
     <>
