@@ -22,6 +22,7 @@
     "react-dom": "18.1.0",
     "react-intersection-observer": "^9.2.2",
     "sharp": "^0.30.6",
+    "simple-oauth2": "^4.3.0",
     "tabler-icons-react": "^1.48.1"
   },
   "devDependencies": {
