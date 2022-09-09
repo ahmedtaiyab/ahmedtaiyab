@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import Layout from "../../components/Layout/Layout";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
@@ -10,6 +11,7 @@ import { fetchFilesFromDirectory } from "../../utility/helpers";
 
 export default function LaceDetails({ postData, likedLaceProducts }) {
   const [products, setProducts] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (likedLaceProducts) {
@@ -21,6 +23,10 @@ export default function LaceDetails({ postData, likedLaceProducts }) {
       setProducts(likedProducts);
     }
   }, [likedLaceProducts, postData]);
+
+  if (router.isFallback) {
+    return <h1>loading.....</h1>;
+  }
 
   return (
     <div>
@@ -44,6 +50,8 @@ export default function LaceDetails({ postData, likedLaceProducts }) {
 }
 
 export async function getStaticProps({ params: { slug } }) {
+  console.log({ slug });
+
   const path = `./content/laceProducts/${slug}.md`;
   const fileContents = fs.readFileSync(path, "utf8");
 
@@ -79,6 +87,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
   };
 }
